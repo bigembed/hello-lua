@@ -10,4 +10,26 @@ It shows how to:
 * Make a rockspec to distribute it with [LuaRocks](http://www.luarocks.org/)
 * Make a test program to test it
 
-The test program can be executed as plain Lua, or with [Shake](http://shake.luaforge.net/).
+Compiling and running under Ubuntu 21.04 should work on other distros with lua 5.3 and above
+
+### Dependencies:
+
+* lua5.3
+* liblua5.3-dev
+* luarocks
+
+For other lua versions edit ==LUA_VER== on Makefile accordingly
+
+### Usage:
+
+```
+$ cd hello-lua
+$ make
+$ lua test.lua
+```
+
+#### For Lua Rocks:
+
+```
+$ sudo make rock
+```

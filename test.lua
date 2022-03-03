@@ -1,5 +1,6 @@
+#!/usr/bin/lua
 package.cpath = "./?.so"
-require "hello"
+hello = require "hello"
 
-print("Testing say_hello()")
-assert("hello world!" == hello.say_hello())
+print("hello from lua")
+print(hello.say_hello())

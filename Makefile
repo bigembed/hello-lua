@@ -1,14 +1,18 @@
-LUA_DIR=/usr/local
-LUA_LIBDIR=$(LUA_DIR)/lib/lua/5.1
-LIBFLAG= -shared -fpic
+LUA_VER=5.3
+LUA_INC_DIR=$(shell pkg-config --cflags lua$(LUA_VER))
+CFLAGS=-Wall -ggdb
+TARGET_NAME=hello
 
-hello.so:	hello.c
-	$(CC) -o hello.so $(LIBFLAG) $(CFLAGS) hello.c -I$(LUA_LIBDIR) -llua
+LIBFLAGS= -shared -fpic
+
+$(TARGET_NAME).so: $(TARGET_NAME).c
+	$(CC) -o $(TARGET_NAME).so $(LIBFLAGS) $(CFLAGS) $(TARGET_NAME).c $(LUA_INC_DIR) -llua$(LUA_VER)
 
 clean:
-	$(RM) hello.so
+	$(RM) $(TARGET_NAME).so
+	$(RM) $(TARGET_NAME).o
 
-test: hello.so
+test: $(TARGET_NAME).so
 	shake test.lua
 
 rock:

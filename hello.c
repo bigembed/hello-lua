@@ -1,7 +1,7 @@
 #include "lua.h"
 #include "lauxlib.h"
 
-#define MESSAGE "hello world!"
+#define MESSAGE "hello from C"
 
 int say_hello(lua_State *L) {
     lua_pushstring(L, MESSAGE);
@@ -14,6 +14,6 @@ static const struct luaL_Reg functions [] = {
 };
 
 int luaopen_hello(lua_State *L) {
-    luaL_register(L, "hello", functions);
+    luaL_newlib(L,functions);
     return 1;
 }
